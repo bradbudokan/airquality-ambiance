@@ -60,6 +60,6 @@ try:
   mybulb.turn_on()
   get_data()
 except:
-  mybulb.turn_off()
+  mybulb.turn_on()
 finally:
   mybulb.turn_off()
