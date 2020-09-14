@@ -20,6 +20,13 @@ data = discover_bulbs()
 mybulb = Bulb(data[0]['ip'])
 mybulb.turn_on()
 
+green = "\033[0;32m"
+yellow = "\033[1;33m"
+orange = "\033[1;31m"
+red = "\033[0;31m"
+purple = "\033[0;35m"
+orange = "\033[1;31m"
+
 def compute_aqi():
     # based on https://en.wikipedia.org/wiki/Air_quality_index#Computing_the_AQI
     # green
