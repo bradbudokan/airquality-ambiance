@@ -20,6 +20,30 @@ data = discover_bulbs()
 mybulb = Bulb(data[0]['ip'])
 mybulb.turn_on()
 
+def compute_aqi():
+    # based on https://en.wikipedia.org/wiki/Air_quality_index#Computing_the_AQI
+    # green
+    if (pm25 <= 12):
+        print(round((((50-0)/(12-0))*(pm25-0))+0))
+    # yellow
+    elif (pm25 > 12) and (pm25 <= 35):
+        print(round((((100-51)/(35-12))*(pm25-12))+51))
+    # orange
+    elif (pm25 > 35) and (pm25 <= 55):
+        print(round((((150-101)/(55-35))*(pm25-35))+101))
+    # red
+    elif (pm25 > 55) and (pm25 <= 150):
+        print(round((((200-151)/(150-55))*(pm25-55))+151))
+    # purple
+    elif (pm25 > 150) and (pm25 <= 250):
+        print(round((((300-201)/(250-150))*(pm25-150))+201))
+    # purple+
+    elif (pm25 > 250) and (pm25 <= 350):
+        print(round((((400-301)/(350-250))*(pm25-250))+301))
+    # purple++
+    else:
+        print(round((((500-401)/(500-350))*(pm25-350))+401))
+        
 def get_data():
   while True:
     try:
@@ -29,7 +53,7 @@ def get_data():
     if(r.ok):
       y = json.loads(r.content.decode('utf-8'))
       pm25 = float(y["results"][0]["PM2_5Value"])
-      print(pm25)
+      compute_aqi():
       if (pm25 <= 12):
         print("green")
         mybulb.set_hsv(70, 75, 1)
