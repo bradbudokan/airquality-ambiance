@@ -7,12 +7,12 @@ import requests
 import time
 import argparse
 
-sensor = '5188'
+sensor = '60019'
 # Check the URI of your selected sensor on www.purpleair.com
-# https://www.purpleair.com/map?opt=1/mAQI/a10/cC0&select=5188#9.37/38.0552/-121.8958
+# https://www.purpleair.com/map?opt=1/mAQI/a10/cC0&select=60019#18.4/37.791815/-122.393065
 parser = argparse.ArgumentParser()
-parser.add_argument('--sensor', default='5188',
-                    help='PurpleAir Sensor (default: 5188, near Hercules, CA)')
+parser.add_argument('--sensor', default='60019',
+                    help='PurpleAir Sensor (default: 60019, San Francisco, CA)')
 args = parser.parse_args()
 
 data = discover_bulbs()
